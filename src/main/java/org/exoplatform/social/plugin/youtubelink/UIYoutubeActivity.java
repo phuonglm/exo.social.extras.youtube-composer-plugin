@@ -5,7 +5,7 @@ import org.exoplatform.webui.config.annotation.ComponentConfig;
 import org.exoplatform.webui.core.lifecycle.UIFormLifecycle;
 import org.exoplatform.webui.config.annotation.EventConfig;
 
-@ComponentConfig(lifecycle = UIFormLifecycle.class, template = "classpath:groovy/social/plugin/link/UILinkActivity.gtmpl", events = {
+@ComponentConfig(lifecycle = UIFormLifecycle.class, template = "classpath:groovy/social/plugin/link/UIYoutubeActivity.gtmpl", events = {
 		@EventConfig(listeners = BaseUIActivity.ToggleDisplayLikesActionListener.class),
 		@EventConfig(listeners = BaseUIActivity.ToggleDisplayCommentFormActionListener.class),
 		@EventConfig(listeners = BaseUIActivity.LikeActivityActionListener.class),

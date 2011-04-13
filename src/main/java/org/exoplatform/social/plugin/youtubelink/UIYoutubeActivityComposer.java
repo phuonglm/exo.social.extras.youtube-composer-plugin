@@ -168,7 +168,7 @@ public class UIYoutubeActivityComposer extends UIActivityComposer {
 	    ActivityManager activityManager = uiComposer.getApplicationComponent(ActivityManager.class);
 	    IdentityManager identityManager = uiComposer.getApplicationComponent(IdentityManager.class);
 	    String remoteUser = requestContext.getRemoteUser();
-	    Identity userIdentity = identityManager.getOrCreateIdentity(OrganizationIdentityProvider.NAME, remoteUser);
+	    Identity userIdentity = identityManager.getOrCreateIdentity(OrganizationIdentityProvider.NAME, remoteUser, false);
 
 	    UIApplication uiApplication = requestContext.getUIApplication();
 	    Map<String, String> templateParams = getTemplateParams();
@@ -194,7 +194,7 @@ public class UIYoutubeActivityComposer extends UIActivityComposer {
 	      Space space = uiDisplaySpaceActivities.getSpace();
 
 	      Identity spaceIdentity = identityManager.getOrCreateIdentity(SpaceIdentityProvider.NAME,
-	                                                                   space.getName(),
+	                                                                   space.getPrettyName(),
 	                                                                   false);
 	      
 	      activityManager.saveActivity(spaceIdentity, activity);
@@ -207,7 +207,7 @@ public class UIYoutubeActivityComposer extends UIActivityComposer {
 	      UIUserActivitiesDisplay uiUserActivitiesDisplay = (UIUserActivitiesDisplay) getActivityDisplay();
 	      String ownerName = uiUserActivitiesDisplay.getOwnerName();
 	      Identity ownerIdentity = identityManager.getOrCreateIdentity(OrganizationIdentityProvider.NAME,
-	                                                                   ownerName);
+	                                                                   ownerName, false);
 	      
 	      activityManager.saveActivity(ownerIdentity, activity);
 	      
