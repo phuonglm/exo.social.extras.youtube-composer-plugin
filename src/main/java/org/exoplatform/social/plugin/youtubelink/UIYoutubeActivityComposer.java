@@ -16,6 +16,7 @@ import org.exoplatform.social.core.identity.provider.SpaceIdentityProvider;
 import org.exoplatform.social.core.manager.ActivityManager;
 import org.exoplatform.social.core.manager.IdentityManager;
 import org.exoplatform.social.core.space.model.Space;
+import org.exoplatform.social.plugin.youtubelink.util.YoutubeTool;
 import org.exoplatform.social.service.rest.LinkShare;
 import org.exoplatform.social.webui.activity.UIActivitiesContainer;
 import org.exoplatform.social.webui.composer.UIComposer;
@@ -27,9 +28,10 @@ import org.exoplatform.webui.config.annotation.EventConfig;
 import org.exoplatform.webui.core.UIApplication;
 import org.exoplatform.webui.event.EventListener;
 import org.exoplatform.webui.form.UIFormStringInput;
+import org.json.JSONObject;
 
 @ComponentConfig(
-		  template = "classpath:groovy/social/plugin/link/UIYoutubeActivityComposer.gtmpl",
+		  template = "classpath:groovy/social/plugin/youtubelink/UIYoutubeActivityComposer.gtmpl",
 		  events = {
 		    @EventConfig(listeners = UIYoutubeActivityComposer.AttachActionListener.class),
 		    @EventConfig(listeners = UIYoutubeActivityComposer.ChangeLinkContentActionListener.class),
@@ -44,13 +46,13 @@ public class UIYoutubeActivityComposer extends UIActivityComposer {
 	  public static final String LINK_PARAM = "link";
 	  public static final String IMAGE_PARAM = "image";
 	  public static final String TITLE_PARAM = "title";
-	  public static final String DESCRIPTION_PARAM = "description";
+	  public static final String HTML_PARAM = "htmlembed";
 	  public static final String COMMENT_PARAM = "comment";
 
 	  //private static final String MSG_ERROR_ATTACH_LINK = "UIComposerLinkExtension.msg.error.Attach_Link";
 	  private static final String HTTP = "http://";
 	  private static final String HTTPS = "https://";
-	  private LinkShare linkShare_;
+	  private JSONObject youtubeJson;
 	  private boolean linkInfoDisplayed_ = false;
 	  private Map<String, String> templateParams;
 	  
@@ -78,12 +80,12 @@ public class UIYoutubeActivityComposer extends UIActivityComposer {
 	    return templateParams;
 	  }
 
-	  public void clearLinkShare() {
-	    linkShare_ = null;
+	  public void clearYoutubeJson() {
+		  youtubeJson = null;
 	  }
 
-	  public LinkShare getLinkShare() {
-	    return linkShare_;
+	  public JSONObject getYoutubeJson() {
+	    return youtubeJson;
 	  }
 
 	  /**
@@ -95,17 +97,16 @@ public class UIYoutubeActivityComposer extends UIActivityComposer {
 	    if (!(url.contains(HTTP) || url.contains(HTTPS))) {
 	      url = HTTP + url;
 	    }
-	    linkShare_ = LinkShare.getInstance(url);
+	    YoutubeTool youtubeTool = new YoutubeTool(url);
+	    youtubeJson = youtubeTool.getoembedData();
 	    templateParams = new HashMap<String, String>();
-	    templateParams.put(LINK_PARAM, linkShare_.getLink());
-	    String image = "";
-	    List<String> images = linkShare_.getImages();
-	    if (images != null && images.size() > 0) {
-	      image = images.get(0);
-	    }
-	    templateParams.put(IMAGE_PARAM, image);
-	    templateParams.put(TITLE_PARAM, linkShare_.getTitle());
-	    templateParams.put(DESCRIPTION_PARAM, linkShare_.getDescription());
+	    templateParams.put(LINK_PARAM, url);
+	    
+	    templateParams.put(IMAGE_PARAM, youtubeTool.getoembedData().getString(YoutubeTool.OEMBED_THUMBURL));
+	    
+	    templateParams.put(TITLE_PARAM, youtubeTool.getoembedData().getString(YoutubeTool.OEMBED_TITLE));
+	    templateParams.put(HTML_PARAM, youtubeTool.getoembedData().getString(YoutubeTool.OEMBED_HTML));
+	    
 	    setLinkInfoDisplayed(true);
 	  }
 
@@ -138,7 +139,7 @@ public class UIYoutubeActivityComposer extends UIActivityComposer {
 	      tempParams.put(LINK_PARAM, requestContext.getRequestParameter(LINK_PARAM));
 	      tempParams.put(IMAGE_PARAM, requestContext.getRequestParameter(IMAGE_PARAM));
 	      tempParams.put(TITLE_PARAM, requestContext.getRequestParameter(TITLE_PARAM));
-	      tempParams.put(DESCRIPTION_PARAM, requestContext.getRequestParameter(DESCRIPTION_PARAM));
+	      tempParams.put(HTML_PARAM, requestContext.getRequestParameter(HTML_PARAM));
 	      uiComposerLinkExtension.setTemplateParams(tempParams);
 	      requestContext.addUIComponentToUpdateByAjax(uiComposerLinkExtension);
 	      UIComponent uiParent = uiComposerLinkExtension.getParent();
@@ -182,7 +183,7 @@ public class UIYoutubeActivityComposer extends UIActivityComposer {
 	      return;
 	    }
 	    
-	    String title = "Shared a link: <a href=\"${" + LINK_PARAM + "}\">${" + TITLE_PARAM + "} </a>"; 
+	    String title = "Shared a video: <a href=\"${" + LINK_PARAM + "}\">${" + TITLE_PARAM + "} </a>"; 
 	    ExoSocialActivity activity = new ExoSocialActivityImpl(userIdentity.getId(),
 	                                                           UIYoutubeActivity.ACTIVITY_TYPE,
 	                                                           title,

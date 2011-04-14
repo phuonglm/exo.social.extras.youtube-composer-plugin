@@ -20,7 +20,7 @@ public class UIYoutubeActivityBuilder extends BaseUIActivityBuilder {
         uiYoutubeActivity.setLinkSource(templateParams.get(UIYoutubeActivityComposer.LINK_PARAM));
         uiYoutubeActivity.setLinkTitle(templateParams.get(UIYoutubeActivityComposer.TITLE_PARAM));
         uiYoutubeActivity.setLinkImage(templateParams.get(UIYoutubeActivityComposer.IMAGE_PARAM));
-        uiYoutubeActivity.setLinkDescription(templateParams.get(UIYoutubeActivityComposer.DESCRIPTION_PARAM));
+        uiYoutubeActivity.setLinkHTML(templateParams.get(UIYoutubeActivityComposer.HTML_PARAM));
         uiYoutubeActivity.setLinkComment(templateParams.get(UIYoutubeActivityComposer.COMMENT_PARAM));
 	  }
 }

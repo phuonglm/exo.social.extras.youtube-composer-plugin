@@ -5,7 +5,7 @@ import org.exoplatform.webui.config.annotation.ComponentConfig;
 import org.exoplatform.webui.core.lifecycle.UIFormLifecycle;
 import org.exoplatform.webui.config.annotation.EventConfig;
 
-@ComponentConfig(lifecycle = UIFormLifecycle.class, template = "classpath:groovy/social/plugin/link/UIYoutubeActivity.gtmpl", events = {
+@ComponentConfig(lifecycle = UIFormLifecycle.class, template = "classpath:groovy/social/plugin/youtubelink/UIYoutubeActivity.gtmpl", events = {
 		@EventConfig(listeners = BaseUIActivity.ToggleDisplayLikesActionListener.class),
 		@EventConfig(listeners = BaseUIActivity.ToggleDisplayCommentFormActionListener.class),
 		@EventConfig(listeners = BaseUIActivity.LikeActivityActionListener.class),
@@ -21,7 +21,7 @@ public class UIYoutubeActivity extends BaseUIActivity {
 	private String linkSource = "";
 	private String linkTitle = "";
 	private String linkImage = "";
-	private String linkDescription = "";
+	private String linkHTML = "";
 	private String linkComment = "";
 
 	public String getLinkComment() {
@@ -32,12 +32,12 @@ public class UIYoutubeActivity extends BaseUIActivity {
 		this.linkComment = linkComment;
 	}
 
-	public String getLinkDescription() {
-		return linkDescription;
+	public String getLinkHTML() {
+		return linkHTML;
 	}
 
-	public void setLinkDescription(String linkDescription) {
-		this.linkDescription = linkDescription;
+	public void setLinkHTML(String linkHTML) {
+		this.linkHTML = linkHTML;
 	}
 
 	public String getLinkImage() {

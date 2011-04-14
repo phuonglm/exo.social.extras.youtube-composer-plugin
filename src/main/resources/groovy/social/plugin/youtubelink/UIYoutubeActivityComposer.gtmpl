@@ -22,7 +22,7 @@
 %>
 <%
   import org.exoplatform.webui.form.UIFormStringInput;
-
+  import org.exoplatform.social.plugin.youtubelink.util.YoutubeTool;
   def removeAllNewLines(def str) {
     if (str) {
       str = str.replaceAll("\r\n|\n\r|\n|\r", "");
@@ -50,22 +50,19 @@
       previousImage = _ctx.appRes("UILinkComposerPlugin.msg.Previous_Image"),
       nextImage = _ctx.appRes("UILinkComposerPlugin.msg.Next_Image");
 
-  def linkShare = uicomponent.getLinkShare();
-  def link, images, title, description, linkData;
-  if (linkShare) {
-    link = removeAllNewLines(linkShare.getLink());
-    images = linkShare.getImages();
-    def image;
-    if (images.size() > 0) {
-      image = images.get(0);
-    }
-    title = removeAllNewLines(linkShare.getTitle());
-    description = removeAllNewLines(linkShare.getDescription());
+  def youtubeJson = uicomponent.getYoutubeJson();
+  def link, image, title, htmlcode , linkData;
+  if (youtubeJson) {
+    link = removeAllNewLines(youtubeJson.getString(YoutubeTool.OEMBED_URL));
+    image = youtubeJson.getString(YoutubeTool.OEMBED_THUMBURL);
+
+    title = removeAllNewLines(youtubeJson.getString(YoutubeTool.OEMBED_TITLE));
+    htmlcode = youtubeJson.getString(YoutubeTool.OEMBED_HTML);
     linkData = "{"+
                   "link: '$link',"+
                   "image: '$image',"+
                   "title: '$title',"+
-                  "description: '$description'"+
+                  "htmlcode: '$htmlcode'"+
                 "}";
   } else {
     linkInfoDisplayed = false;
@@ -91,66 +88,33 @@
   }
 </script>
 <% if (linkInfoDisplayed) {
-     uicomponent.clearLinkShare();
-                           %>
+     uicomponent.clearYoutubeJson();
+%>
   <div class="UILinkShareDisplay">
-    <%
-      if(uicomponent.isImageLink(link)){
-        %>
-          <div>
-            <a href="$link" target="_blank"><img src="$link" alt=" " height="120"/></a> 
-          </div>
-        <%
-      }
-      else {
-        %>
           <div class="ThumbnailLeft">
-          <% if (images.size() > 0) { %>
+
             <div id="UIThumbnailDisplay">
               <div id="Thumbnails">
-                <%
-                  def thumbnailClass = "ThumbnailShown";
-                  images.each({ %>
-                   <img src="$it" class="$thumbnailClass" />
-                  <%
-                    thumbnailClass = "ThumbnailHidden";
-                  })%>
-              </div>
-              <div class="ThumbnailAction">
-                <div class="BackIcon" id="BackThumbnail">
-                  <span></span>
-                </div>
-                <div id="Stats" class="Stats">
-
-                </div>
-                <div class="NextIcon" id="NextThumbnail">
-                  <span></span>
-                </div>
-                <div style="clear: both;">
-                  <span></span>
-                </div>
+                   <img src="$image" class="ThumbnailShown" />
               </div>
             </div>
             <div class="ThumbnailOption">
               <input id="ThumbnailCheckbox" type="checkbox" />
                 $noThumbnail
             </div>
-          <% } %>
           </div>
           <div class="ContentRight">
             <div id="LinkTitle" class="Title Editable">
               $title
             </div>
             <div id="LinkDescription" class="Content Editable">
-              $description
+              $htmlcode
             </div>
             <div id="LinkUrl" class="Source">
               $link
             </div>
           </div>
-        <%
-      }
-    %>
+
     <div class="ClearLeft"><span></span></div>
   </div>
 <% } else { %>

@@ -167,7 +167,7 @@
             linkTitle = linkSource;
           }
           def linkImage = uicomponent.getLinkImage();
-          def linkDescription = uicomponent.getLinkDescription();
+          def linkHTML = uicomponent.getLinkHTML();
           def linkComment = uicomponent.getLinkComment();
           def linkClass = "Content";
           def link = "";
@@ -178,16 +178,6 @@
           }
         %>
       <div class="Content">$linkComment<br/><br/></div>
-      <%
-        if(uicomponent.isImageLink(linkSource)){
-          %>
-            <div>
-              <a href="$linkSource" target="_blank"><img src="$linkSource" alt=" " height="120"/></a>
-            </div>
-          <%
-        }
-        else{
-          %>
             <div class="LinkShare">
               <div class="Thumbnail">
                   $link
@@ -196,14 +186,12 @@
                 <div class="Title">
                   <a class="ColorLink" target="_blank" href="$linkSource">$linkTitle</a>
                 </div>
-                <div class="Description">$linkDescription</div>
+                <div class="Description">$linkHTML</div>
                 <div class="Source">$labelSource : $linkSource</div>
               </div>
               <div style="clear: both; height: 0px;"><span></span></div>
             </div>
-          <%
-        }
-      %>
+
       <div class="LinkCM">
         <span class="DateTime">$activityPostedTime *</span>
       <% def toggleDisplayCommentAction = uicomponent.event('ToggleDisplayCommentForm', null, false);
