@@ -92,16 +92,7 @@
 %>
   <div class="UILinkShareDisplay">
           <div class="ThumbnailLeft">
-
-            <div id="UIThumbnailDisplay">
-              <div id="Thumbnails">
-                   <img src="$image" class="ThumbnailShown" />
-              </div>
-            </div>
-            <div class="ThumbnailOption">
-              <input id="ThumbnailCheckbox" type="checkbox" />
-                $noThumbnail
-            </div>
+            &nbsp;
           </div>
           <div class="ContentRight">
             <div id="LinkTitle" class="Title Editable">

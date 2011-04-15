@@ -97,15 +97,15 @@ public class UIYoutubeActivityComposer extends UIActivityComposer {
 	    if (!(url.contains(HTTP) || url.contains(HTTPS))) {
 	      url = HTTP + url;
 	    }
-	    YoutubeTool youtubeTool = new YoutubeTool(url);
-	    youtubeJson = youtubeTool.getoembedData();
+
+	    youtubeJson = YoutubeTool.getoembedData(url);
 	    templateParams = new HashMap<String, String>();
 	    templateParams.put(LINK_PARAM, url);
 	    
-	    templateParams.put(IMAGE_PARAM, youtubeTool.getoembedData().getString(YoutubeTool.OEMBED_THUMBURL));
+	    templateParams.put(IMAGE_PARAM, youtubeJson.getString(YoutubeTool.OEMBED_THUMBURL));
 	    
-	    templateParams.put(TITLE_PARAM, youtubeTool.getoembedData().getString(YoutubeTool.OEMBED_TITLE));
-	    templateParams.put(HTML_PARAM, youtubeTool.getoembedData().getString(YoutubeTool.OEMBED_HTML));
+	    templateParams.put(TITLE_PARAM, youtubeJson.getString(YoutubeTool.OEMBED_TITLE));
+	    templateParams.put(HTML_PARAM, youtubeJson.getString(YoutubeTool.OEMBED_HTML));
 	    
 	    setLinkInfoDisplayed(true);
 	  }
