@@ -22,7 +22,7 @@
 %>
 <%
   import org.exoplatform.webui.form.UIFormStringInput;
-  import org.exoplatform.social.plugin.youtubelink.util.YoutubeTool;
+  import org.exoplatform.social.plugin.videolink.util.VideoEmbedTool;
   def removeAllNewLines(def str) {
     if (str) {
       str = str.replaceAll("\r\n|\n\r|\n|\r", "");
@@ -44,23 +44,17 @@
   def jsManager = requestContext.getJavascriptManager();
   jsManager.importJavascript("eXo.social.Util", "/social-resources/javascript");
   jsManager.importJavascript("eXo.social.PortalHttpRequest", "/social-resources/javascript");
-  jsManager.importJavascript("eXo.social.webui.UIComposerLinkExtension", "/social-resources/javascript");
+  jsManager.importJavascript("eXo.social.webui.UIComposerVideoLinkExtension", "/social-resources-videoemmbed/javascript");
 
-  def noThumbnail = _ctx.appRes("UILinkComposerPlugin.msg.No_Thumbnail"),
-      previousImage = _ctx.appRes("UILinkComposerPlugin.msg.Previous_Image"),
-      nextImage = _ctx.appRes("UILinkComposerPlugin.msg.Next_Image");
-
-  def youtubeJson = uicomponent.getYoutubeJson();
+  def videoJson = uicomponent.getVideoJson();
   def link, image, title, htmlcode , linkData;
-  if (youtubeJson) {
-    link = removeAllNewLines(youtubeJson.getString(YoutubeTool.OEMBED_URL));
-    image = youtubeJson.getString(YoutubeTool.OEMBED_THUMBURL);
+  if (videoJson) {
+    link = removeAllNewLines(videoJson.getString(VideoEmbedTool.OEMBED_URL));
 
-    title = removeAllNewLines(youtubeJson.getString(YoutubeTool.OEMBED_TITLE));
-    htmlcode = youtubeJson.getString(YoutubeTool.OEMBED_HTML);
+    title = removeAllNewLines(videoJson.getString(VideoEmbedTool.OEMBED_TITLE));
+    htmlcode = videoJson.getString(VideoEmbedTool.OEMBED_HTML);
     linkData = "{"+
                   "link: '$link',"+
-                  "image: '$image',"+
                   "title: '$title',"+
                   "htmlcode: '$htmlcode'"+
                 "}";
@@ -88,12 +82,9 @@
   }
 </script>
 <% if (linkInfoDisplayed) {
-     uicomponent.clearYoutubeJson();
+     uicomponent.clearVideoJson();
 %>
   <div class="UILinkShareDisplay">
-          <div class="ThumbnailLeft">
-            &nbsp;
-          </div>
           <div class="ContentRight">
             <div id="LinkTitle" class="Title Editable">
               $title

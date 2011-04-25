@@ -8,10 +8,10 @@
   </parent>
   
   <groupId>org.exoplatform.social</groupId>
-  <artifactId>exo.social.extras.youtube-composer-plugin</artifactId>
+  <artifactId>exo.social.extras.video-composer-plugin</artifactId>
   <version>1.2.0-Beta3-SNAPSHOT</version>
-  <name>eXo Social Extras - Youtube Composer Plugin</name>
-  <description>eXo Social Extras - Youtube Composer Plugin</description>
+  <name>eXo Social Extras - Video Composer Plugin</name>
+  <description>eXo Social Extras - Video Composer Plugin</description>
 
   <build>
     <sourceDirectory>src/main/java</sourceDirectory>

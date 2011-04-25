@@ -31,9 +31,9 @@
           <name>Document Activity</name>
           <object type="org.exoplatform.social.webui.activity.UIActivityExtension">
             <field name="type"><string>org.exoplatform.social.webui.activity.BaseUIActivity</string></field>
-            <field name="name"><string>YOUTUBE_ACTIVITY</string></field>
-            <field name="component"><string>org.exoplatform.social.plugin.youtubelink.UIYoutubeActivity</string></field>
-            <field name="activityBuiderClass"><string>org.exoplatform.social.plugin.youtubelink.UIYoutubeActivityBuilder</string></field>
+            <field name="name"><string>VIDEO_ACTIVITY</string></field>
+            <field name="component"><string>org.exoplatform.social.plugin.videolink.UIVideoActivity</string></field>
+            <field name="activityBuiderClass"><string>org.exoplatform.social.plugin.videolink.UIVideoActivityBuilder</string></field>
           </object>
         </object-param>
       </init-params>
@@ -47,8 +47,8 @@
           <name>Document Composer</name>
           <object type="org.exoplatform.webui.ext.UIExtension">
             <field name="type"><string>org.exoplatform.social.webui.composer.UIActivityComposer</string></field>
-            <field name="name"><string>YOUTUBE_ACTIVITY</string></field>
-            <field name="component"><string>org.exoplatform.social.plugin.youtubelink.UIYoutubeActivityComposer</string></field>
+            <field name="name"><string>VIDEO_ACTIVITY</string></field>
+            <field name="component"><string>org.exoplatform.social.plugin.videolink.UIVideoActivityComposer</string></field>
             <field name="rank"><int>1</int></field>
           </object>
         </object-param>
@@ -66,12 +66,12 @@
         <values-param>
           <name>classpath.resources</name>
           <description>The resources that start with the following package name should be load from file system</description>
-          <value>locale.social.plugin.youtubelink.UIYoutubeLinkComposerPlugin</value>
+          <value>locale.social.plugin.videolink.UIVideoLinkComposerPlugin</value>
         </values-param>
         <values-param>
           <name>portal.resource.names</name>
           <description>The resources that start with the following package name should be load from file system</description>
-          <value>locale.social.plugin.youtubelink.UIYoutubeLinkComposerPlugin</value>
+          <value>locale.social.plugin.videolink.UIVideoLinkComposerPlugin</value>
         </values-param>
       </init-params>
     </component-plugin>
