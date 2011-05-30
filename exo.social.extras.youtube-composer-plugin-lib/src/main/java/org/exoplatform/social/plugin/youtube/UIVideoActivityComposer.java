@@ -32,7 +32,7 @@ import org.exoplatform.webui.form.UIFormStringInput;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@ComponentConfig(template = "classpath:groovy/social/plugin/videolink/UIVideoActivityComposer.gtmpl", events = {
+@ComponentConfig(template = "classpath:groovy/social/plugin/youtube/UIVideoActivityComposer.gtmpl", events = {
 		@EventConfig(listeners = UIVideoActivityComposer.SearchVideoActionListener.class),
 		@EventConfig(listeners = UIVideoActivityComposer.SelectVideoFromResultListActionListener.class),
 		@EventConfig(listeners = UIVideoActivityComposer.AttachActionListener.class),
