@@ -1,8 +1,8 @@
-/target
-/.classpath
-/.settings
-/.project
+target
+.classpath
+.settings
+.project
 .svn
-/*.iml
-/*.iws
-/*.ipr
+*.iml
+*.iws
+*.ipr
