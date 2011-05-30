@@ -1,0 +1,51 @@
+/**
+ * Copyright (C) 2003-2010 eXo Platform SAS.
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Affero General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, see<http://www.gnu.org/licenses/>.
+ */
+
+
+.UIVideoActivityComposer {
+    background-image: url("/social-resources-videoemmbed/skin/ShareImages/activity/FBActivityIMG.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+    /** height: 16px; **/
+    width: 16px;
+    background-position: 0 -17px;
+}
+
+.UIComposerVideoLinkExtension {
+    background: none repeat scroll 0 0 white;
+    border: 1px solid #D7D7D7;
+    /** height: 23px; **/
+    margin: 5px 0;
+}
+
+.UIComposerVideoLinkExtension #InputLink {
+	  border: 1px solid white;
+    float: left;
+    height: 19px;
+    width: 85%;
+}
+
+.UIComposerVideoLinkExtension .AttachButton {
+    border: 1px solid gray;
+    float: right;
+    height: 23px;
+}
+
+.UIComposerVideoLinkExtension .PreviewArea {
+	  background: none repeat scroll 0 0 #EAE6D7;
+    border: 1px solid #EBE8D9
+}

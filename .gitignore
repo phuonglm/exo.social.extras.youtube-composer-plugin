@@ -2,6 +2,10 @@
 /.classpath
 /.settings
 /.project
+/*/target
+/*/.classpath
+/*/.settings
+/*/.project
 .svn
 /*.iml
 /*.iws

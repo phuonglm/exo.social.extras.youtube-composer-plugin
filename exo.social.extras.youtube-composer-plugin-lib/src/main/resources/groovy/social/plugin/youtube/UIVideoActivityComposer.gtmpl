@@ -22,7 +22,7 @@
 %>
 <%
   import org.exoplatform.webui.form.UIFormStringInput;
-  import org.exoplatform.social.plugin.videolink.util.VideoEmbedTool;
+  import org.exoplatform.social.plugin.youtube.util.VideoEmbedTool;
   def removeAllNewLines(def str) {
     if (str) {
       str = str.replaceAll("\r\n|\n\r|\n|\r", "");
@@ -68,6 +68,9 @@
                   "attachButtonId: 'AttachButton',"+
                   "attachUrl: '${uicomponent.url("Attach")}',"+
                   "changeLinkContentUrl: '${uicomponent.url("ChangeLinkContent")}',"+
+				  "searchUrl: '${uicomponent.url("SearchVideo")}',"+
+				  "selectVideoUrl: '${uicomponent.url("SelectVideoFromResultList")}',"+
+				  "lasQuery: '${uicomponent.getQuery()}',"+
                   "linkData: $linkData"+
                 "}";
 
@@ -78,7 +81,7 @@
 <div id="$uicomponentId">
 <script type="text/javascript">
   function initComposerLinkExtension() {
-    new eXo.social.webui.UIComposerLinkExtension($params);
+    new eXo.social.webui.UIComposerVideoLinkExtension($params);
   }
 </script>
 <% if (linkInfoDisplayed) {
@@ -101,9 +104,26 @@
   </div>
 <% } else { %>
   <div class="UIComposerExtensionContainer">
-    <div class="UIComposerLinkExtension">
+    <div class="UIComposerVideoLinkExtension">
       <% uicomponent.renderChild(UIFormStringInput.class); %>
       <input id="AttachButton" class="AttachButton" type="submit" value="$labelAttach" />
+	  
+	  <div id="VideoPreviewArea" class="PreviewArea">
+	  
+		<%
+		   def searchResults = VideoEmbedTool.getQueryData(uicomponent.getQuery());
+		   def i = 0;
+		   while( i < searchResults.length()){
+			   def videoItem = searchResults.getJSONObject(i);
+			   i++;
+		%>
+		<img src="<%=videoItem.getString("thumbURL")%>" width="120px" height="90px" 
+			title="<%=videoItem.getString("title")%>" alt="<%=videoItem.getString("media")%>" />
+		<%
+		   };
+		%>
+		
+	  </div>
       <div class="ClearBoth">
         <span></span>
       </div>

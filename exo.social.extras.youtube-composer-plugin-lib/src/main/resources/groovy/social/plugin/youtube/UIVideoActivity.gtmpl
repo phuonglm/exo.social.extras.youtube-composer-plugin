@@ -166,16 +166,11 @@
           if (linkTitle.equals("")) {
             linkTitle = linkSource;
           }
-          def linkImage = uicomponent.getLinkImage();
           def linkHTML = uicomponent.getLinkHTML();
           def linkComment = uicomponent.getLinkComment();
           def linkClass = "Content";
           def link = "";
-          if (linkImage.equals("")) {
-            linkClass = "";
-          } else {
-            link = "<img width=\"150px\" title=\"$linkTitle\" src=\"$linkImage\" />";
-          }
+          linkClass = "";
         %>
       <div class="Content">$linkComment<br/><br/></div>
             <div class="LinkShare">
@@ -198,15 +193,15 @@
          def commentLink = "";
       %>
      <% if (activityCommentAndLikable) { %>
-        <a class="LinkCM $commentLink" onclick="$toggleDisplayCommentAction" id="CommentLink${activity.id}" href="UIVideoActivity.gtmpl#comment">
+        <a class="LinkCM $commentLink" onclick="$toggleDisplayCommentAction" id="CommentLink${activity.id}" href="#comment">
           $labelComment
         </a> |
       <% if (uicomponent.isLiked()) { %>
-        <a onclick="$unlikeActivityAction" class="LinkCM" id="UnLikeLink${activity.id}" href="UIVideoActivity.gtmpl#unlike">
+        <a onclick="$unlikeActivityAction" class="LinkCM" id="UnLikeLink${activity.id}" href="#unlike">
           $labelUnlike
         </a>
       <% } else { %>
-        <a onclick="$likeActivityAction" class="LinkCM" id="LikeLink${activity.id}" href="UIVideoActivity.gtmpl#like">
+        <a onclick="$likeActivityAction" class="LinkCM" id="LikeLink${activity.id}" href="#like">
           $labelLike
         </a>
       <% }%>
@@ -247,11 +242,11 @@
         <div class="CommentContent">
           <div class="CommentBorder">
           <% if (commentListStatus.getStatus().equals("latest") || commentListStatus.getStatus().equals("none")) { %>
-            <a onclick="$showAllCommentsAction" href="UIVideoActivity.gtmpl#show-all-comments">
+            <a onclick="$showAllCommentsAction" href="#show-all-comments">
               $labelShowAllComments
             </a>
           <% } else if (commentListStatus.getStatus().equals("all")) { %>
-            <a onclick="$hideAllCommentsAction" href="UIVideoActivity.gtmpl#hide-all-comments">
+            <a onclick="$hideAllCommentsAction" href="#hide-all-comments">
               $labelHideAllComments
             </a>
           <% } %>

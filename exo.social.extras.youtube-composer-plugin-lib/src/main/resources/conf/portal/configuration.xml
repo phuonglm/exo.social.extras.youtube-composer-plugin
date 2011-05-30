@@ -32,8 +32,8 @@
           <object type="org.exoplatform.social.webui.activity.UIActivityExtension">
             <field name="type"><string>org.exoplatform.social.webui.activity.BaseUIActivity</string></field>
             <field name="name"><string>VIDEO_ACTIVITY</string></field>
-            <field name="component"><string>org.exoplatform.social.plugin.videolink.UIVideoActivity</string></field>
-            <field name="activityBuiderClass"><string>org.exoplatform.social.plugin.videolink.UIVideoActivityBuilder</string></field>
+            <field name="component"><string>org.exoplatform.social.plugin.youtube.UIVideoActivity</string></field>
+            <field name="activityBuiderClass"><string>org.exoplatform.social.plugin.youtube.UIVideoActivityBuilder</string></field>
           </object>
         </object-param>
       </init-params>
@@ -48,7 +48,7 @@
           <object type="org.exoplatform.webui.ext.UIExtension">
             <field name="type"><string>org.exoplatform.social.webui.composer.UIActivityComposer</string></field>
             <field name="name"><string>VIDEO_ACTIVITY</string></field>
-            <field name="component"><string>org.exoplatform.social.plugin.videolink.UIVideoActivityComposer</string></field>
+            <field name="component"><string>org.exoplatform.social.plugin.youtube.UIVideoActivityComposer</string></field>
             <field name="rank"><int>1</int></field>
           </object>
         </object-param>

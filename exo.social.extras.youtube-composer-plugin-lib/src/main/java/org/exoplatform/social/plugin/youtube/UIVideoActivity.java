@@ -1,11 +1,11 @@
-package org.exoplatform.social.plugin.videolink;
+package org.exoplatform.social.plugin.youtube;
 
 import org.exoplatform.social.webui.activity.BaseUIActivity;
 import org.exoplatform.webui.config.annotation.ComponentConfig;
-import org.exoplatform.webui.config.annotation.EventConfig;
 import org.exoplatform.webui.core.lifecycle.UIFormLifecycle;
+import org.exoplatform.webui.config.annotation.EventConfig;
 
-@ComponentConfig(lifecycle = UIFormLifecycle.class, template = "classpath:groovy/social/plugin/videolink/UIVideoActivity.gtmpl", events = {
+@ComponentConfig(lifecycle = UIFormLifecycle.class, template = "classpath:groovy/social/plugin/youtube/UIVideoActivity.gtmpl", events = {
 		@EventConfig(listeners = BaseUIActivity.ToggleDisplayLikesActionListener.class),
 		@EventConfig(listeners = BaseUIActivity.ToggleDisplayCommentFormActionListener.class),
 		@EventConfig(listeners = BaseUIActivity.LikeActivityActionListener.class),
@@ -20,7 +20,6 @@ public class UIVideoActivity extends BaseUIActivity {
 	public static final String ACTIVITY_TYPE = "VIDEO_ACTIVITY";
 	private String linkSource = "";
 	private String linkTitle = "";
-	private String linkImage = "";
 	private String linkHTML = "";
 	private String linkComment = "";
 
@@ -38,14 +37,6 @@ public class UIVideoActivity extends BaseUIActivity {
 
 	public void setLinkHTML(String linkHTML) {
 		this.linkHTML = linkHTML;
-	}
-
-	public String getLinkImage() {
-		return linkImage;
-	}
-
-	public void setLinkImage(String linkImage) {
-		this.linkImage = linkImage;
 	}
 
 	public String getLinkSource() {
