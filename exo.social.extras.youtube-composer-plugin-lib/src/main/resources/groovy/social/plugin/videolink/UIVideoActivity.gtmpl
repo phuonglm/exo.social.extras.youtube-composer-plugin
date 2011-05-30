@@ -198,15 +198,15 @@
          def commentLink = "";
       %>
      <% if (activityCommentAndLikable) { %>
-        <a class="LinkCM $commentLink" onclick="$toggleDisplayCommentAction" id="CommentLink${activity.id}" href="#comment">
+        <a class="LinkCM $commentLink" onclick="$toggleDisplayCommentAction" id="CommentLink${activity.id}" href="UIVideoActivity.gtmpl#comment">
           $labelComment
         </a> |
       <% if (uicomponent.isLiked()) { %>
-        <a onclick="$unlikeActivityAction" class="LinkCM" id="UnLikeLink${activity.id}" href="#unlike">
+        <a onclick="$unlikeActivityAction" class="LinkCM" id="UnLikeLink${activity.id}" href="UIVideoActivity.gtmpl#unlike">
           $labelUnlike
         </a>
       <% } else { %>
-        <a onclick="$likeActivityAction" class="LinkCM" id="LikeLink${activity.id}" href="#like">
+        <a onclick="$likeActivityAction" class="LinkCM" id="LikeLink${activity.id}" href="UIVideoActivity.gtmpl#like">
           $labelLike
         </a>
       <% }%>
@@ -247,11 +247,11 @@
         <div class="CommentContent">
           <div class="CommentBorder">
           <% if (commentListStatus.getStatus().equals("latest") || commentListStatus.getStatus().equals("none")) { %>
-            <a onclick="$showAllCommentsAction" href="#show-all-comments">
+            <a onclick="$showAllCommentsAction" href="UIVideoActivity.gtmpl#show-all-comments">
               $labelShowAllComments
             </a>
           <% } else if (commentListStatus.getStatus().equals("all")) { %>
-            <a onclick="$hideAllCommentsAction" href="#hide-all-comments">
+            <a onclick="$hideAllCommentsAction" href="UIVideoActivity.gtmpl#hide-all-comments">
               $labelHideAllComments
             </a>
           <% } %>

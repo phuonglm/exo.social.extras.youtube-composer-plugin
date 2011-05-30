@@ -2,8 +2,8 @@ package org.exoplatform.social.plugin.videolink;
 
 import org.exoplatform.social.webui.activity.BaseUIActivity;
 import org.exoplatform.webui.config.annotation.ComponentConfig;
-import org.exoplatform.webui.core.lifecycle.UIFormLifecycle;
 import org.exoplatform.webui.config.annotation.EventConfig;
+import org.exoplatform.webui.core.lifecycle.UIFormLifecycle;
 
 @ComponentConfig(lifecycle = UIFormLifecycle.class, template = "classpath:groovy/social/plugin/videolink/UIVideoActivity.gtmpl", events = {
 		@EventConfig(listeners = BaseUIActivity.ToggleDisplayLikesActionListener.class),

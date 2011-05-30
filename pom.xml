@@ -1,50 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <artifactId>exo.social.extras</artifactId>
-    <groupId>org.exoplatform.social</groupId>
-    <version>1.2.0-Beta3-SNAPSHOT</version>
-    <relativePath></relativePath>
-  </parent>
-  
+
   <groupId>org.exoplatform.social</groupId>
-  <artifactId>exo.social.extras.video-composer-plugin</artifactId>
-  <version>1.2.0-Beta3-SNAPSHOT</version>
-  <name>eXo Social Extras - Video Composer Plugin</name>
-  <description>eXo Social Extras - Video Composer Plugin</description>
+  <artifactId>exo.social.extras.youtube-composer-plugin</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <name>eXo Social Extras - Youtube Composer Plugin</name>
+  <description>eXo Social Extras - Youtube Composer Plugin</description>
+  <packaging>pom</packaging>
 
-  <build>
-    <sourceDirectory>src/main/java</sourceDirectory>
-    <outputDirectory>target/classes</outputDirectory>
-    <resources>
-      <resource>
-        <directory>src/main/resources</directory>
-        <includes>
-          <include>**/*.properties</include>
-          <include>**/*.xml</include>
-          <include>**/*.drl</include>
-          <include>**/*.vm</include>
-          <include>**/*.doc</include>
-          <include>**/*.xls</include>
-          <include>**/*.ppt</include>
-          <include>**/*.txt</include>
-          <include>**/*.jar</include>
-          <include>**/*.pom</include>
-          <include>**/*.sha1</include>
-          <include>**/*.conf</include>
-          <include>**/*.gtmpl</include>
-          <include>**/*.groovy</include>
-        </includes>
-      </resource>
-      <resource>
-        <directory>src/main/java</directory>
-        <includes>
-          <include>**/*.xml</include>
-        </includes>
-      </resource>
-    </resources>
-  </build>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
 
+<!--
   <dependencies>
 
     <dependency>
@@ -119,4 +88,9 @@
       <scope>provided</scope>
     </dependency>
   </dependencies>
+  -->
+  <modules>
+    <module>exo.social.extras.youtube-composer-plugin-lib</module>
+    <module>exo.social.extras.youtube-composer-plugin-webapp</module>
+  </modules>
 </project>

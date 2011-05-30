@@ -1,13 +1,8 @@
 package org.exoplatform.social.plugin.videolink;
 
-import org.exoplatform.social.plugin.videolink.util.VideoEmbedTool;
-import org.exoplatform.social.webui.composer.UIActivityComposer;
-import org.exoplatform.social.webui.composer.UIComposer.PostContext;
-import org.exoplatform.webui.application.WebuiRequestContext;
-import org.exoplatform.webui.core.UIComponent;
-import org.exoplatform.webui.event.Event;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.exoplatform.social.core.activity.model.ExoSocialActivity;
 import org.exoplatform.social.core.activity.model.ExoSocialActivityImpl;
 import org.exoplatform.social.core.identity.model.Identity;
@@ -16,14 +11,20 @@ import org.exoplatform.social.core.identity.provider.SpaceIdentityProvider;
 import org.exoplatform.social.core.manager.ActivityManager;
 import org.exoplatform.social.core.manager.IdentityManager;
 import org.exoplatform.social.core.space.model.Space;
+import org.exoplatform.social.plugin.videolink.util.VideoEmbedTool;
 import org.exoplatform.social.webui.activity.UIActivitiesContainer;
+import org.exoplatform.social.webui.composer.UIActivityComposer;
 import org.exoplatform.social.webui.composer.UIComposer;
+import org.exoplatform.social.webui.composer.UIComposer.PostContext;
 import org.exoplatform.social.webui.profile.UIUserActivitiesDisplay;
 import org.exoplatform.social.webui.space.UISpaceActivitiesDisplay;
 import org.exoplatform.web.application.ApplicationMessage;
+import org.exoplatform.webui.application.WebuiRequestContext;
 import org.exoplatform.webui.config.annotation.ComponentConfig;
 import org.exoplatform.webui.config.annotation.EventConfig;
 import org.exoplatform.webui.core.UIApplication;
+import org.exoplatform.webui.core.UIComponent;
+import org.exoplatform.webui.event.Event;
 import org.exoplatform.webui.event.EventListener;
 import org.exoplatform.webui.form.UIFormStringInput;
 import org.json.JSONObject;
@@ -31,10 +32,10 @@ import org.json.JSONObject;
 @ComponentConfig(
         template = "classpath:groovy/social/plugin/videolink/UIVideoActivityComposer.gtmpl",
         events = {
-                @EventConfig(listeners = UIVideoActivityComposer.SearchVideo.class),
-                @EventConfig(listeners = UIVideoActivityComposer.SelectVideoFromResultList.class),
-                @EventConfig(listeners = UIVideoActivityComposer.AttachActionListener.class),
-                @EventConfig(listeners = UIVideoActivityComposer.ChangeLinkContentActionListener.class),
+                @EventConfig(listeners = org.exoplatform.social.plugin.videolink.UIVideoActivityComposer.SearchVideo.class),
+                @EventConfig(listeners = org.exoplatform.social.plugin.videolink.UIVideoActivityComposer.SelectVideoFromResultList.class),
+                @EventConfig(listeners = org.exoplatform.social.plugin.videolink.UIVideoActivityComposer.AttachActionListener.class),
+                @EventConfig(listeners = org.exoplatform.social.plugin.videolink.UIVideoActivityComposer.ChangeLinkContentActionListener.class),
                 @EventConfig(listeners = UIActivityComposer.CloseActionListener.class),
                 @EventConfig(listeners = UIActivityComposer.SubmitContentActionListener.class),
                 @EventConfig(listeners = UIActivityComposer.ActivateActionListener.class)
@@ -107,12 +108,12 @@ public class UIVideoActivityComposer extends UIActivityComposer {
     setLinkInfoDisplayed(true);
   }
 
-  static public class AttachActionListener extends EventListener<UIVideoActivityComposer> {
+  static public class AttachActionListener extends EventListener<org.exoplatform.social.plugin.videolink.UIVideoActivityComposer> {
 
     @Override
-    public void execute(Event<UIVideoActivityComposer> event) throws Exception {
+    public void execute(Event<org.exoplatform.social.plugin.videolink.UIVideoActivityComposer> event) throws Exception {
       WebuiRequestContext requestContext = event.getRequestContext();
-      UIVideoActivityComposer uiComposerLinkExtension = event.getSource();
+      org.exoplatform.social.plugin.videolink.UIVideoActivityComposer uiComposerLinkExtension = event.getSource();
       String url = requestContext.getRequestParameter(OBJECTID);
       try {
         uiComposerLinkExtension.setLink(url.trim());
@@ -127,11 +128,11 @@ public class UIVideoActivityComposer extends UIActivityComposer {
     }
   }
 
-  static public class ChangeLinkContentActionListener extends EventListener<UIVideoActivityComposer> {
+  static public class ChangeLinkContentActionListener extends EventListener<org.exoplatform.social.plugin.videolink.UIVideoActivityComposer> {
     @Override
-    public void execute(Event<UIVideoActivityComposer> event) throws Exception {
+    public void execute(Event<org.exoplatform.social.plugin.videolink.UIVideoActivityComposer> event) throws Exception {
       WebuiRequestContext requestContext = event.getRequestContext();
-      UIVideoActivityComposer uiComposerLinkExtension = event.getSource();
+      org.exoplatform.social.plugin.videolink.UIVideoActivityComposer uiComposerLinkExtension = event.getSource();
       
       Map<String, String> tempParams = new HashMap<String, String>();
       if( uiComposerLinkExtension.getTemplateParams() != null ){
@@ -150,21 +151,21 @@ public class UIVideoActivityComposer extends UIActivityComposer {
     }
   }
 
-  public static class SelectVideoFromResultList extends EventListener<UIVideoActivityComposer>{
+  public static class SelectVideoFromResultList extends EventListener<org.exoplatform.social.plugin.videolink.UIVideoActivityComposer>{
     @Override
-    public void execute(Event<UIVideoActivityComposer> event) throws Exception {
+    public void execute(Event<org.exoplatform.social.plugin.videolink.UIVideoActivityComposer> event) throws Exception {
       WebuiRequestContext requestContext = event.getRequestContext();
-      UIVideoActivityComposer uiComposerLinkExtension = event.getSource();
+      org.exoplatform.social.plugin.videolink.UIVideoActivityComposer uiComposerLinkExtension = event.getSource();
 
     }
   }
 
-  public static class SearchVideo extends EventListener<UIVideoActivityComposer>{
+  public static class SearchVideo extends EventListener<org.exoplatform.social.plugin.videolink.UIVideoActivityComposer>{
 
     @Override
-    public void execute(Event<UIVideoActivityComposer> event) throws Exception {
+    public void execute(Event<org.exoplatform.social.plugin.videolink.UIVideoActivityComposer> event) throws Exception {
       WebuiRequestContext requestContext = event.getRequestContext();
-      UIVideoActivityComposer uiComposerLinkExtension = event.getSource();
+      org.exoplatform.social.plugin.videolink.UIVideoActivityComposer uiComposerLinkExtension = event.getSource();
 
 
     }
