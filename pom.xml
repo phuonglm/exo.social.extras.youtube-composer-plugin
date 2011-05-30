@@ -13,6 +13,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+    <commons-httpclient.version>3.1</commons-httpclient.version>
     <org.json.version>20070829</org.json.version>
     <org.shindig.version>1.0-r790473-Patch05</org.shindig.version>
 
@@ -31,6 +32,12 @@
 
   <dependencyManagement>
     <dependencies>
+
+      <dependency>
+        <groupId>commons-httpclient</groupId>
+        <artifactId>commons-httpclient</artifactId>
+        <version>${commons-httpclient.version}</version>
+      </dependency>
 
       <dependency>
         <groupId>org.json</groupId>
