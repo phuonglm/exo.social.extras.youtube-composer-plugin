@@ -1,4 +1,4 @@
-Youtube-Composer-Plugin for eXo Social
+Youtube-Composer-Plugin for eXo Social 1.2
 To install:
   In the root directory of project, execute this command
     mvn clean pakage
@@ -9,4 +9,4 @@ To install:
     exo.social.extras.youtube-composer-plugin-webapp/target/*.war -->  eXo social tomcat's webapp directory
   restart Tomcat.
 To remove:
-  Remove all abrove file from tomcat lib and webapp directory. 
+  Remove all above files from tomcat lib and webapp directory.

@@ -2,21 +2,26 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
+
   <parent>
-    <artifactId>exo.social.extras</artifactId>
+    <artifactId>exo.social.extras.youtube-composer-plugin</artifactId>
     <groupId>org.exoplatform.social</groupId>
-    <version>1.2.0-Beta3-SNAPSHOT</version>
-    <relativePath></relativePath>
+    <version>1.0.0-SNAPSHOT</version>
   </parent>
+
   <groupId>org.exoplatform.social</groupId>
   <artifactId>exo.social.extras.youtube-composer-plugin-lib</artifactId>
-  <version>1.2.0-Beta3-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <name>exo.social.extras.youtube-composer-plugin-lib</name>
-  <url>http://maven.apache.org</url>
-  <properties>
 
-  </properties>
   <dependencies>
+
+  <dependency>
+    <groupId>commons-httpclient</groupId>
+    <artifactId>commons-httpclient</artifactId>
+    <version>${commons-httpclient.version}</version>
+  </dependency>
+
     <dependency>
       <groupId>org.json</groupId>
       <artifactId>json</artifactId>
