@@ -22,7 +22,7 @@
     <org.exoplatform.ws.version>2.2.0-CR2</org.exoplatform.ws.version>
     <org.exoplatform.jcr.version>1.14.0-CR2</org.exoplatform.jcr.version>
     <org.exoplatform.portal.version>3.2.0-PLF-SNAPSHOT</org.exoplatform.portal.version>
-    <org.exoplatform.social.version>1.2.0-beta3-SNAPSHOT</org.exoplatform.social.version>
+    <org.exoplatform.social.version>1.2.0-Beta3-SNAPSHOT</org.exoplatform.social.version>
   </properties>
 
   <modules>
